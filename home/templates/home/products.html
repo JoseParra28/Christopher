@@ -2,20 +2,69 @@
 {% load static %}
 
 {% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
-{% endblock %}
- <div class="container">
-    <div class="row">
-        <div class="col">
-           <h1>This is a test</h1>
+<div class="overlay">
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+                
+            </div>
         </div>
     </div>
 </div>
-
+{% endblock %}
+<div class="col">
+    <div class="card h-100 border-0">
+        {{ ItemProduct.name }}
+        {{ ItemProduct.price }}
+        {{ ItemProduct.image }}
+    </div>
+</div>
 {% block content %}
+<div class="overlay">
+    <div class="container-flid">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="logo-font">Products</h2>
+                <hr class="w-50 mb-1"> </hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-container col-10 offset-1">
+                <div class="row mt-1 mb-2"></div>
+                <div class="row">
+                    {% for ItemProduct in products %}
+                    <div class="col-ms-6 col-md-6 col-lg-4 col-xl-3">
+                        <div class="card h-100 border-0">
+                            {% if ItemProduct.image %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ ItemProduct.image.url }}" alt="{{ ItemProduct.name }}">
+                                </a>
+                                {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ ItemProduct.name }}">
+                                </a>
+                                {% endif %}
+                                <div class="card-body pb-0">
+                                    <p class="mb-0">{{ ItemProduct.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left font-weight-bold">€{{ ItemProduct.price }}</p>
+                                            {% if ItemProduct.category %}
+                                            <p class="small mt-1 mb-0">
+                                                <a class="text-muted" href="">
+                                                    <i class="fas fa-tag mr-1"></i>{{ ItemProduct.category.slug }}
+                                                </a>
+                                            </p>
+                                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %} 
