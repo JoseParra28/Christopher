@@ -53,13 +53,16 @@
                                             <p class="lead mb-0 text-left font-weight-bold">€{{ ItemProduct.price }}</p>
                                             {% if ItemProduct.category %}
                                             <p class="small mt-1 mb-0">
-                                                <a class="text-muted" href="">
+                                                <a class="text-muted" href="/">
                                                     <i class="fas fa-tag mr-1"></i>{{ ItemProduct.category.slug }}
                                                 </a>
+                                                <p class="lead mb-0 text-left font-weight-light">{{ ItemProduct.description }}</p>
                                             </p>
                                             {% endif %}
-                        </div>
+                          </div>
+                      </div>
                     </div>
+                    
                     {% endfor %}
                 </div>
             </div>
